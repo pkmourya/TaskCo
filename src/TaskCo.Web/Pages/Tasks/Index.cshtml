@@ -1,0 +1,90 @@
+@page
+@model TaskCo.Web.Pages.Tasks.IndexModel
+@{
+    ViewData["Title"] = Model.ProjectName != null ? $"{Model.ProjectName} – Tasks" : "Tasks";
+    Layout = "_Layout";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+        <a asp-page="/Projects/Index" class="text-muted text-decoration-none">← Projects</a>
+        <h2 class="mb-0 mt-1">@(Model.ProjectName ?? "Tasks")</h2>
+    </div>
+    <a asp-page="/Tasks/Create" asp-route-projectId="@Model.ProjectId" class="btn btn-primary">+ New Task</a>
+</div>
+
+@if (Model.Error != null)
+{
+    <div class="alert alert-danger">@Model.Error</div>
+}
+
+@if (Model.Tasks == null || Model.Tasks.Count == 0)
+{
+    <div class="alert alert-info">No tasks yet. Create your first task.</div>
+}
+else
+{
+    <table class="table table-hover align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Priority</th>
+                <th>Due</th>
+                <th class="text-end">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var task in Model.Tasks)
+            {
+                <tr>
+                    <td>
+                        @task.Title
+                        @if (!string.IsNullOrEmpty(task.Description))
+                        {
+                            <br /><small class="text-muted">@task.Description</small>
+                        }
+                    </td>
+                    <td>
+                        @{
+                            var statusClass = task.Status switch
+                            {
+                                "Todo" => "badge bg-secondary",
+                                "InProgress" => "badge bg-primary",
+                                "Done" => "badge bg-success",
+                                _ => "badge bg-light text-dark"
+                            };
+                            var statusLabel = task.Status switch
+                            {
+                                "InProgress" => "In Progress",
+                                _ => task.Status
+                            };
+                        }
+                        <span class="@statusClass">@statusLabel</span>
+                    </td>
+                    <td>
+                        @{
+                            var priorityClass = task.Priority switch
+                            {
+                                "Low" => "badge bg-light text-dark border",
+                                "Medium" => "badge bg-warning text-dark",
+                                "High" => "badge bg-danger",
+                                _ => "badge bg-light text-dark"
+                            };
+                        }
+                        <span class="@priorityClass">@task.Priority</span>
+                    </td>
+                    <td>
+                        @(task.DueDate.HasValue ? task.DueDate.Value.ToString("MMM d, yyyy") : "—")
+                    </td>
+                    <td class="text-end">
+                        <a asp-page="/Tasks/Edit" asp-route-projectId="@Model.ProjectId" asp-route-id="@task.Id"
+                           class="btn btn-sm btn-outline-secondary">Edit</a>
+                        <a asp-page="/Tasks/Delete" asp-route-projectId="@Model.ProjectId" asp-route-id="@task.Id"
+                           class="btn btn-sm btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -163,3 +163,4 @@
 /Users/pkmourya/TaskCo/src/TaskCo.Api/bin/Debug/net9.0/FluentValidation.dll
 /Users/pkmourya/TaskCo/src/TaskCo.Api/bin/Debug/net9.0/FluentValidation.DependencyInjectionExtensions.dll
 /Users/pkmourya/TaskCo/src/TaskCo.Api/bin/Debug/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/pkmourya/TaskCo/src/TaskCo.Api/obj/Debug/net9.0/TaskCo.Api.sourcelink.json

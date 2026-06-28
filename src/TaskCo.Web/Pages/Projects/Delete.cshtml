@@ -1,0 +1,34 @@
+@page "{id:int}"
+@model TaskCo.Web.Pages.Projects.DeleteModel
+@{
+    ViewData["Title"] = "Delete Project";
+    Layout = "_Layout";
+}
+
+<div class="row justify-content-center mt-4">
+    <div class="col-md-6">
+        <h2 class="mb-4 text-danger">Delete Project</h2>
+
+        @if (Model.Error != null)
+        {
+            <div class="alert alert-danger">@Model.Error</div>
+        }
+
+        <div class="card border-danger mb-4">
+            <div class="card-body">
+                <h5 class="card-title">@Model.ProjectName</h5>
+                @if (!string.IsNullOrEmpty(Model.ProjectDescription))
+                {
+                    <p class="card-text text-muted">@Model.ProjectDescription</p>
+                }
+            </div>
+        </div>
+
+        <p class="text-muted">This will permanently delete the project and all its tasks.</p>
+
+        <form method="post" class="d-flex gap-2">
+            <button type="submit" class="btn btn-danger">Yes, Delete</button>
+            <a asp-page="/Projects/Index" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>

@@ -95,3 +95,4 @@
 /Users/pkmourya/TaskCo/src/TaskCo.Web/obj/Debug/net9.0/TaskCo.Web.pdb
 /Users/pkmourya/TaskCo/src/TaskCo.Web/obj/Debug/net9.0/TaskCo.Web.genruntimeconfig.cache
 /Users/pkmourya/TaskCo/src/TaskCo.Web/obj/Debug/net9.0/ref/TaskCo.Web.dll
+/Users/pkmourya/TaskCo/src/TaskCo.Web/obj/Debug/net9.0/TaskCo.Web.sourcelink.json

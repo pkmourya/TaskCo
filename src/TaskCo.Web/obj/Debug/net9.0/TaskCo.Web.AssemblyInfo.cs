@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TaskCo.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+42249abee6dfd9cd7e1138270a517033d695650e")]
 [assembly: System.Reflection.AssemblyProductAttribute("TaskCo.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TaskCo.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

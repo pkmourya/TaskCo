@@ -458,3 +458,4 @@
 /Users/pkmourya/TaskCo/tests/TaskCo.Tests/bin/Debug/net9.0/TaskCo.Api.dll
 /Users/pkmourya/TaskCo/tests/TaskCo.Tests/bin/Debug/net9.0/TaskCo.Api.pdb
 /Users/pkmourya/TaskCo/tests/TaskCo.Tests/obj/Debug/net9.0/MvcTestingAppManifest.json
+/Users/pkmourya/TaskCo/tests/TaskCo.Tests/obj/Debug/net9.0/TaskCo.Tests.sourcelink.json

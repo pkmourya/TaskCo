@@ -5,15 +5,10 @@ namespace TaskCo.Web.Pages;
 
 public class IndexModel : PageModel
 {
-    private readonly ILogger<IndexModel> _logger;
-
-    public IndexModel(ILogger<IndexModel> logger)
+    public IActionResult OnGet()
     {
-        _logger = logger;
-    }
-
-    public void OnGet()
-    {
-
+        if (!string.IsNullOrEmpty(HttpContext.Session.GetString("JwtToken")))
+            return RedirectToPage("/Projects/Index");
+        return RedirectToPage("/Auth/Login");
     }
 }

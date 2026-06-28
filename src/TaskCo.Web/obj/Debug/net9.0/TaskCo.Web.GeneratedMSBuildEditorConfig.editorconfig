@@ -1,7 +1,5 @@
 is_global = true
 build_property.TargetFramework = net9.0
-build_property.TargetFrameworkIdentifier = .NETCoreApp
-build_property.TargetFrameworkVersion = v9.0
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
@@ -22,6 +20,18 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
+[/Users/pkmourya/TaskCo/src/TaskCo.Web/Pages/Auth/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXV0aC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pkmourya/TaskCo/src/TaskCo.Web/Pages/Auth/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXV0aC9Mb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pkmourya/TaskCo/src/TaskCo.Web/Pages/Auth/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXV0aC9SZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/pkmourya/TaskCo/src/TaskCo.Web/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -34,8 +44,40 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/pkmourya/TaskCo/src/TaskCo.Web/Pages/Projects/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJvamVjdHMvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pkmourya/TaskCo/src/TaskCo.Web/Pages/Projects/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJvamVjdHMvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pkmourya/TaskCo/src/TaskCo.Web/Pages/Projects/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJvamVjdHMvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pkmourya/TaskCo/src/TaskCo.Web/Pages/Projects/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJvamVjdHMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/pkmourya/TaskCo/src/TaskCo.Web/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pkmourya/TaskCo/src/TaskCo.Web/Pages/Tasks/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGFza3MvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pkmourya/TaskCo/src/TaskCo.Web/Pages/Tasks/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGFza3MvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pkmourya/TaskCo/src/TaskCo.Web/Pages/Tasks/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGFza3MvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pkmourya/TaskCo/src/TaskCo.Web/Pages/Tasks/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGFza3MvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/pkmourya/TaskCo/src/TaskCo.Web/Pages/_ViewImports.cshtml]

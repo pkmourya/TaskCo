@@ -1,0 +1,50 @@
+@page
+@model TaskCo.Web.Pages.Projects.IndexModel
+@{
+    ViewData["Title"] = "My Projects";
+    Layout = "_Layout";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>My Projects</h2>
+    <a asp-page="/Projects/Create" class="btn btn-primary">+ New Project</a>
+</div>
+
+@if (Model.Error != null)
+{
+    <div class="alert alert-danger">@Model.Error</div>
+}
+
+@if (Model.Projects == null || Model.Projects.Count == 0)
+{
+    <div class="alert alert-info">No projects yet. Create your first project to get started.</div>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-md-2 g-3">
+        @foreach (var project in Model.Projects)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a asp-page="/Tasks/Index" asp-route-projectId="@project.Id" class="text-decoration-none">
+                                @project.Name
+                            </a>
+                        </h5>
+                        @if (!string.IsNullOrEmpty(project.Description))
+                        {
+                            <p class="card-text text-muted">@project.Description</p>
+                        }
+                        <small class="text-muted">Created @project.CreatedAt.ToString("MMM d, yyyy")</small>
+                    </div>
+                    <div class="card-footer d-flex gap-2 justify-content-end">
+                        <a asp-page="/Tasks/Index" asp-route-projectId="@project.Id" class="btn btn-sm btn-outline-primary">Tasks</a>
+                        <a asp-page="/Projects/Edit" asp-route-id="@project.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                        <a asp-page="/Projects/Delete" asp-route-id="@project.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
