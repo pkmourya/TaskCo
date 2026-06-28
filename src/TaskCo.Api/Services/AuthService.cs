@@ -38,7 +38,7 @@ public class AuthService : IAuthService
         _db.Users.Add(user);
         await _db.SaveChangesAsync();
 
-        return new AuthResponse(_tokenService.GenerateToken(user));
+        return new AuthResponse(_tokenService.GenerateToken(user), user.Id, user.Email);
     }
 
     public async Task<AuthResponse> LoginAsync(LoginRequest request)
@@ -49,6 +49,6 @@ public class AuthService : IAuthService
         if (user is null || _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, request.Password) == PasswordVerificationResult.Failed)
             throw new UnauthorizedException("Invalid credentials");
 
-        return new AuthResponse(_tokenService.GenerateToken(user));
+        return new AuthResponse(_tokenService.GenerateToken(user), user.Id, user.Email);
     }
 }

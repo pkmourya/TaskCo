@@ -1,5 +1,6 @@
 using System.Security.Claims;
 using FluentValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TaskCo.Api.Models.Common;
@@ -10,7 +11,7 @@ namespace TaskCo.Api.Controllers;
 
 [ApiController]
 [Route("api/projects")]
-[Authorize]
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 public class ProjectsController : ControllerBase
 {
     private readonly IProjectService _projectService;

@@ -1,0 +1,60 @@
+@{
+    bool isAuth = User.Identity?.IsAuthenticated == true;
+    string? userEmail = User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] – TaskCo</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark shadow-sm mb-4">
+        <div class="container">
+            <a class="navbar-brand fw-bold" asp-page="/Index">TaskCo</a>
+            <div class="navbar-collapse">
+                <ul class="navbar-nav me-auto">
+                    @if (isAuth)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Index">My Projects</a>
+                        </li>
+                    }
+                </ul>
+                <ul class="navbar-nav">
+                    @if (isAuth)
+                    {
+                        <li class="nav-item">
+                            <span class="nav-link text-light opacity-75 small">@userEmail</span>
+                        </li>
+                        <li class="nav-item">
+                            <form method="post" asp-page="/Logout" class="d-inline">
+                                <button type="submit" class="btn btn-link nav-link text-light">Logout</button>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Register">Register</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        @RenderBody()
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

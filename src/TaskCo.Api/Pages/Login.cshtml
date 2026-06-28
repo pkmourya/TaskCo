@@ -1,0 +1,44 @@
+@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h4 class="card-title mb-4">Sign in to TaskCo</h4>
+
+                @if (Model.Error != null)
+                {
+                    <div class="alert alert-danger py-2">@Model.Error</div>
+                }
+
+                <form method="post">
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="Email">Email</label>
+                        <input asp-for="Email" type="email" class="form-control" autocomplete="email" />
+                        @if (Model.EmailError != null)
+                        {
+                            <div class="text-danger small mt-1">@Model.EmailError</div>
+                        }
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="Password">Password</label>
+                        <input asp-for="Password" type="password" class="form-control" autocomplete="current-password" />
+                        @if (Model.PasswordError != null)
+                        {
+                            <div class="text-danger small mt-1">@Model.PasswordError</div>
+                        }
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                </form>
+
+                <p class="text-center mt-3 mb-0 small">
+                    No account? <a asp-page="/Register">Register</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,175 @@
+@page
+@model TaskCo.Api.Pages.Projects.DetailsModel
+@{
+    ViewData["Title"] = Model.Project?.Name ?? "Project";
+}
+
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-page="/Index">My Projects</a></li>
+        <li class="breadcrumb-item active">@Model.Project?.Name</li>
+    </ol>
+</nav>
+
+<div class="d-flex justify-content-between align-items-start mb-3">
+    <div>
+        <h2 class="mb-0">@Model.Project?.Name</h2>
+        @if (!string.IsNullOrEmpty(Model.Project?.Description))
+        {
+            <p class="text-muted mb-0">@Model.Project.Description</p>
+        }
+    </div>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#createTaskForm">
+        + New Task
+    </button>
+</div>
+
+<div class="collapse @(Model.ShowCreateForm ? "show" : "") mb-4" id="createTaskForm">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h6 class="card-title mb-3">Add Task</h6>
+            @if (Model.CreateError != null)
+            {
+                <div class="alert alert-danger py-2">@Model.CreateError</div>
+            }
+            <form method="post" asp-page-handler="CreateTask">
+                <input type="hidden" name="projectId" value="@Model.ProjectId" />
+                <div class="mb-3">
+                    <label class="form-label" for="Title">Title <span class="text-danger">*</span></label>
+                    <input name="Title" id="Title" value="@Model.CreateTitle" type="text"
+                           class="form-control" maxlength="200" placeholder="Task title" />
+                    @if (Model.TitleError != null)
+                    {
+                        <div class="text-danger small mt-1">@Model.TitleError</div>
+                    }
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="TaskDescription">Description</label>
+                    <textarea name="TaskDescription" id="TaskDescription" class="form-control"
+                              rows="2" maxlength="2000">@Model.CreateDescription</textarea>
+                </div>
+                <div class="row g-3 mb-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Status</label>
+                        <select name="TaskStatus" class="form-control">
+                            <option value="Todo" selected="@(Model.CreateStatus == "Todo")">Todo</option>
+                            <option value="InProgress" selected="@(Model.CreateStatus == "InProgress")">In Progress</option>
+                            <option value="Done" selected="@(Model.CreateStatus == "Done")">Done</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Priority</label>
+                        <select name="TaskPriority" class="form-control">
+                            <option value="Low" selected="@(Model.CreatePriority == "Low")">Low</option>
+                            <option value="Medium" selected="@(Model.CreatePriority == "Medium")">Medium</option>
+                            <option value="High" selected="@(Model.CreatePriority == "High")">High</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label" for="DueDate">Due Date</label>
+                        <input name="DueDate" id="DueDate" type="date" class="form-control"
+                               value="@Model.CreateDueDate?.ToString("yyyy-MM-dd")" />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary me-2">Add Task</button>
+                <button type="button" class="btn btn-outline-secondary"
+                        data-bs-toggle="collapse" data-bs-target="#createTaskForm">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@* ── Filter bar ─────────────────────────────────────────── *@
+<div class="d-flex gap-2 mb-3">
+    <span class="align-self-center text-muted small me-1">Filter:</span>
+    <a asp-page="/Projects/Details" asp-route-projectId="@Model.ProjectId"
+       class="btn btn-sm @(Model.ActiveFilter == null ? "btn-secondary" : "btn-outline-secondary")">All</a>
+    <a asp-page="/Projects/Details" asp-route-projectId="@Model.ProjectId" asp-route-filter="Todo"
+       class="btn btn-sm @(Model.ActiveFilter == "Todo" ? "btn-secondary" : "btn-outline-secondary")">Todo</a>
+    <a asp-page="/Projects/Details" asp-route-projectId="@Model.ProjectId" asp-route-filter="InProgress"
+       class="btn btn-sm @(Model.ActiveFilter == "InProgress" ? "btn-secondary" : "btn-outline-secondary")">In Progress</a>
+    <a asp-page="/Projects/Details" asp-route-projectId="@Model.ProjectId" asp-route-filter="Done"
+       class="btn btn-sm @(Model.ActiveFilter == "Done" ? "btn-secondary" : "btn-outline-secondary")">Done</a>
+</div>
+
+@* ── Task table ─────────────────────────────────────────── *@
+@if (Model.Tasks.Count == 0)
+{
+    <div class="alert alert-light border text-muted text-center py-4">
+        @(Model.ActiveFilter != null ? $"No {Model.ActiveFilter} tasks." : "No tasks yet — add one above.")
+    </div>
+}
+else
+{
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th class="ps-3">Title</th>
+                        <th>Status</th>
+                        <th>Priority</th>
+                        <th>Due</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var t in Model.Tasks)
+                    {
+                        <tr>
+                            <td class="ps-3">
+                                <div class="fw-medium">@t.Title</div>
+                                @if (!string.IsNullOrEmpty(t.Description))
+                                {
+                                    <div class="text-muted small">@t.Description</div>
+                                }
+                            </td>
+                            <td>
+                                @{
+                                    var statusBadge = t.Status switch
+                                    {
+                                        TaskItemStatus.Todo       => "badge bg-secondary",
+                                        TaskItemStatus.InProgress => "badge bg-primary",
+                                        TaskItemStatus.Done       => "badge bg-success",
+                                        _                         => "badge bg-light text-dark"
+                                    };
+                                    var statusLabel = t.Status switch
+                                    {
+                                        TaskItemStatus.InProgress => "In Progress",
+                                        _ => t.Status.ToString()
+                                    };
+                                }
+                                <span class="@statusBadge">@statusLabel</span>
+                            </td>
+                            <td>
+                                @{
+                                    var priorityBadge = t.Priority switch
+                                    {
+                                        TaskItemPriority.High   => "badge bg-danger",
+                                        TaskItemPriority.Medium => "badge bg-warning text-dark",
+                                        TaskItemPriority.Low    => "badge bg-success",
+                                        _                       => "badge bg-light text-dark"
+                                    };
+                                }
+                                <span class="@priorityBadge">@t.Priority</span>
+                            </td>
+                            <td class="text-muted small">
+                                @(t.DueDate.HasValue ? t.DueDate.Value.ToString("MMM d, yyyy") : "—")
+                            </td>
+                            <td class="text-end pe-3">
+                                <form method="post" asp-page-handler="DeleteTask" class="d-inline">
+                                    <input type="hidden" name="projectId" value="@Model.ProjectId" />
+                                    <input type="hidden" name="taskId" value="@t.Id" />
+                                    <button type="submit" class="btn btn-danger btn-sm"
+                                            onclick="return confirm('Delete this task?')">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <p class="text-muted small mt-2">@Model.Tasks.Count task(s) shown</p>
+}
