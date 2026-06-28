@@ -1,0 +1,56 @@
+# Build output
+bin/
+obj/
+out/
+publish/
+
+# VS / Rider / VS Code
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# .NET secrets & env
+appsettings.*.json
+!appsettings.json
+!appsettings.Development.json
+secrets.json
+.env
+.env.*
+
+# EF Core migrations temp
+*.mdf
+*.ldf
+*.ndf
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Test results
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+*.trx
+
+# Publish profiles
+Properties/PublishProfiles/
+**/Properties/launchSettings.json
+
+# Logs
+*.log
+logs/

@@ -1,0 +1,24 @@
+# Build output — not useful to read
+bin/
+obj/
+
+# Vendor JS/CSS — large, not project code
+src/TaskCo.Api/wwwroot/lib/
+src/TaskCo.Web/wwwroot/lib/
+
+# EF Core auto-generated designer files
+**/*.Designer.cs
+**/AppDbContextModelSnapshot.cs
+
+# Test results
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.user
+.vs/
+.idea/
