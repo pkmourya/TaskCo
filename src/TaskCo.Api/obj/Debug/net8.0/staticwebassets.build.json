@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "MqUb7PG2Xc4d02QhyRVohOHm8xbc3qQK4+umcee8R6A=",
+  "Source": "TaskCo.Api",
+  "BasePath": "_content/TaskCo.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

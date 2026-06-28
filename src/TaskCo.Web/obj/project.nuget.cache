@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "mL0er1sqxkg=",
+  "success": true,
+  "projectFilePath": "/Users/pkmourya/TaskCo/src/TaskCo.Web/TaskCo.Web.csproj",
+  "expectedPackageFiles": [
+    "/Users/pkmourya/.nuget/packages/microsoft.netcore.app.ref/9.0.15/microsoft.netcore.app.ref.9.0.15.nupkg.sha512",
+    "/Users/pkmourya/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.15/microsoft.aspnetcore.app.ref.9.0.15.nupkg.sha512",
+    "/Users/pkmourya/.nuget/packages/microsoft.netcore.app.host.osx-arm64/9.0.15/microsoft.netcore.app.host.osx-arm64.9.0.15.nupkg.sha512"
+  ],
+  "logs": []
+}
